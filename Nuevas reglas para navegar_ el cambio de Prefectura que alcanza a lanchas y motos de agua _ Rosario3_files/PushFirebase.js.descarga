@@ -1,0 +1,56 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging.js";
+
+// Yout web config aditionals
+const STORAGE_KEY = "cms_token_sync_240924";
+const SITE = "/sites/rosario3";
+const PUBLICATION = "9";
+const TOPIC = "rosario3_prod";
+
+if (Notification.permission === 'default') {
+	localStorage.removeItem(STORAGE_KEY);
+	localStorage.removeItem(STORAGE_KEY+"_value");
+}
+
+// Your web app's Firebase configuration
+const vapidKey = "BP1W6fKA97hLjhlEZVzbpORGZqhDFQ2WMU5NK3gf8XKuP5_IZ4QGfrh6a5VMcy0VbBnRrsa-VlazBdk9fY9MbXM";
+const firebaseConfig = {
+	apiKey: "AIzaSyBRZiokTF_5BRNZUbBV1z7P1PlR6t1kX3o",
+	authDomain: "scenic-flux-782.firebaseapp.com",
+	databaseURL: "https://scenic-flux-782.firebaseio.com",
+	projectId: "scenic-flux-782",
+	storageBucket: "scenic-flux-782.appspot.com",
+	messagingSenderId: "1062518414057",
+	appId: "1:1062518414057:web:b6d65b0301e2ecb5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+//const messaging = getMessaging(app);
+
+const messaging = getMessaging();
+getToken(messaging, { vapidKey: vapidKey }).then((currentToken) => {
+  if (currentToken) {
+    	var tokenStorage = localStorage.getItem(STORAGE_KEY);
+	if (tokenStorage == null || tokenStorage == undefined) {
+		localStorage.setItem(STORAGE_KEY, true);
+		localStorage.setItem(STORAGE_KEY+"_value", currentToken);
+
+		fetch('/ajax/notifications/registerWebClientService.json?token='+currentToken+'&site='+SITE+'&publication='+PUBLICATION+'&topic='+TOPIC, {
+			method: 'GET',
+			mode: 'cors'
+	    	}).then(function(response) {
+		      	console.log("Fetch from server respose registerWebClientService: " + response);
+		}).catch(function(e) {
+	    		console.log("Error on fetch from server registerWebClientService: " + e);
+		});
+	}
+
+    	console.log("User current token: " + currentToken);
+  } else {
+    // Show permission request UI
+    console.log('No registration token available. Request permission to generate one.');
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+});

@@ -1,0 +1,778 @@
+/* ==========================================================================
+   Variables y Resets
+   ========================================================================== */
+   :root {
+    --color-bg: #f7f9fa;
+    --color-text: #1a1a1a;
+    --color-text-light: #555555;
+    --color-brand: #003366; /* Azul Rosario3 / Editorial */
+    --color-accent: #0077cc;
+    --color-alert: #cc0000;
+    --color-success: #008800;
+    
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Merriweather', serif;
+    
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-brand);
+    letter-spacing: -1px;
+}
+
+/* ==========================================================================
+   Scrollytelling Layout
+   ========================================================================== */
+#scrolly {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Capa Visual (Sticky) */
+.sticky-visual {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: #e3f2fd; /* Color base del agua */
+    z-index: 1;
+}
+
+/* Capa de Texto (Scroll) */
+.scroll-text {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20vh;
+    /* Evitar eventos de puntero en el contenedor general, pero habilitarlos en las tarjetas */
+    pointer-events: none; 
+}
+
+.step {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    opacity: 0.2;
+    transition: opacity 0.5s ease;
+}
+
+.step.is-active {
+    opacity: 1;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    margin-top: 30vh; /* Para que quede abajo del gráfico principal */
+    pointer-events: auto; /* Reactivar eventos para leer texto, scrollear, etc. */
+}
+
+.step-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-brand);
+}
+
+.step-card p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+.nota-aclaracion {
+    font-size: 0.9rem !important;
+    font-style: italic;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+/* Step 0 - Intro */
+.intro-step {
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(247,249,250,1) 0%, rgba(227,242,253,0) 100%);
+    min-height: 100vh;
+    justify-content: flex-start;
+    padding-top: 15vh;
+    opacity: 1; /* Siempre visible al inicio */
+}
+
+.nota-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-brand);
+    margin-bottom: var(--spacing-sm);
+    max-width: 800px;
+}
+
+.nota-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.scroll-indicator {
+    margin-top: auto;
+    margin-bottom: 5vh;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator p {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--color-accent);
+}
+
+.scroll-arrow {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* ==========================================================================
+   Visuales y Gráficos (Sticky)
+   ========================================================================== */
+.escenario {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rio {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, #bbdefb, #90caf9);
+    transition: height 1s ease, background 1s ease;
+}
+
+.vis-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Escena 1: El Cambio */
+#vis-cambio {
+    text-align: center;
+    font-family: var(--font-serif);
+}
+
+#vis-cambio .ord-antes {
+    font-size: 2rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 1rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#vis-cambio .arrow-down {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transition: all 0.5s ease 0.3s;
+}
+
+#vis-cambio .ord-ahora {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-brand);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.5s ease 0.6s;
+}
+
+body[data-scenestate="1"] #vis-cambio {
+    opacity: 1;
+}
+body[data-scenestate="1"] #vis-cambio .ord-antes {
+    transform: translateY(0);
+    opacity: 1;
+}
+body[data-scenestate="1"] #vis-cambio .arrow-down {
+    opacity: 1;
+}
+body[data-scenestate="1"] #vis-cambio .ord-ahora {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* La Embarcación */
+#boat-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 10;
+}
+
+.boat-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Animación sutil inicial */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+.boat-svg {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Movimiento de la estela */
+body[data-scenestate="2"] .estela,
+body[data-scenestate="6"] .estela {
+    opacity: 0.5;
+    stroke-dasharray: 10;
+    animation: dash 2s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+/* Escena 2: Etiquetas */
+#etiquetas-alcance {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.etiqueta {
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: all 0.5s ease;
+    white-space: nowrap;
+}
+
+.etiqueta::after {
+    content: '';
+    position: absolute;
+    background: var(--color-accent);
+}
+
+.et-lancha { top: -20px; left: 10px; transform: translateY(-10px); }
+.et-lancha::after { width: 1px; height: 15px; bottom: -15px; left: 20px; }
+
+.et-moto { bottom: -30px; left: -20px; transform: translateY(10px); }
+.et-moto::after { width: 1px; height: 15px; top: -15px; right: 20px; }
+
+.et-motor { top: -10px; right: -40px; transform: translateY(-10px); }
+.et-motor::after { width: 1px; height: 15px; bottom: -15px; left: 10px; transform: rotate(-30deg); }
+
+body[data-scenestate="2"] .etiqueta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Escena 3 y 4: Motor y Slider */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+    transition: all 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+#motor-interactivo {
+    position: fixed; /* Fixed relative to viewport for the slider to be clickable easily */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 20; /* Sobre la tarjeta de texto */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Modificamos el scale/pos de la lancha en escena 3/4 */
+body[data-scenestate="3"] #boat-container,
+body[data-scenestate="4"] #boat-container {
+    transform: translate(-80%, -50%) scale(2); /* Zoom y desplazamiento al motor */
+    opacity: 0.3; /* Desenfocar/alejar */
+}
+
+.potencia-valor {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: var(--font-serif);
+    color: var(--color-brand);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.potencia-status {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+    transition: all 0.3s ease;
+    background: #e0e0e0;
+    color: #555;
+}
+
+.status-obligatoria {
+    background: var(--color-brand);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Slider CSS */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    margin-top: -10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #ccc;
+    border-radius: 2px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+.slider-marks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Escena 5: Embarcación Nueva */
+#vis-nueva {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--color-brand);
+    z-index: 15;
+}
+
+body[data-scenestate="5"] #boat-container {
+    transform: translate(-50%, -20%) scale(1);
+    opacity: 0.5;
+}
+
+.checklist h4 {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.checklist ul {
+    list-style: none;
+}
+
+.check-item {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.check-item::before {
+    content: '✓';
+    color: var(--color-success);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+body[data-scenestate="5"] .check-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+body[data-scenestate="5"] .check-item:nth-child(1) { transition-delay: 0.2s; }
+body[data-scenestate="5"] .check-item:nth-child(2) { transition-delay: 0.4s; }
+body[data-scenestate="5"] .check-item:nth-child(3) { transition-delay: 0.6s; }
+
+/* Escena 6: Matrícula */
+#vis-matricula {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+}
+
+body[data-scenestate="6"] #boat-container {
+    transform: translate(-50%, -50%);
+}
+
+.barrera-container {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 150px;
+    background-color: var(--color-alert);
+    transition: all 0.8s ease;
+}
+
+.barrera {
+    position: absolute;
+    top: -30px;
+    left: -70px;
+    background: var(--color-alert);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: opacity 0.5s ease;
+}
+
+.barrera-abierta {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    background: white;
+    color: var(--color-success);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+/* Animación de apertura de barrera controlada por IntersectionObserver (se simula aquí) */
+body[data-scenestate="6"] .barrera-container {
+    height: 0px; /* Desaparece */
+    opacity: 0;
+}
+body[data-scenestate="6"] .barrera {
+    opacity: 0;
+}
+body[data-scenestate="6"] .barrera-abierta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+/* Escena 7: Impo/Expo */
+#vis-impoexpo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 20;
+    pointer-events: auto; /* Para hacer click */
+}
+
+body[data-scenestate="7"] #boat-container {
+    transform: translate(-50%, 50%); /* Se va abajo */
+}
+
+.caminos-container {
+    background: rgba(255,255,255,0.9);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.camino-label {
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-brand);
+}
+
+.bifurcacion {
+    display: flex;
+    gap: 10px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.camino-btn {
+    padding: 10px 15px;
+    border: 1px solid var(--color-brand);
+    background: transparent;
+    color: var(--color-brand);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.camino-btn:hover, .camino-btn.active {
+    background: var(--color-brand);
+    color: white;
+}
+
+.camino-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    min-height: 40px;
+}
+
+/* Escena 8: Régimen Simplificado */
+#vis-simplificado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+}
+
+body[data-scenestate="8"] #boat-container {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+}
+
+.capa-profesional {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prof-item {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-top: 3px solid var(--color-accent);
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+body[data-scenestate="8"] .prof-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body[data-scenestate="8"] .prof-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* Escena 9: Resumen */
+#vis-resumen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 25;
+}
+
+body[data-scenestate="9"] #boat-container {
+    opacity: 0; /* Desaparece la lancha en el resumen */
+}
+body[data-scenestate="9"] .rio {
+    height: 100%; /* El agua inunda todo para un cierre limpio */
+}
+
+.resumen-final {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.resumen-final h2 {
+    font-family: var(--font-serif);
+    color: var(--color-brand);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.resumen-final ol {
+    padding-left: 20px;
+}
+
+.resumen-final li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding: 12px 24px;
+    background-color: var(--color-brand);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #002244;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nota-title {
+        font-size: 2.2rem;
+    }
+    .nota-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .step-card {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-sm);
+    }
+    
+    #motor-interactivo {
+        width: 90%;
+        max-width: 300px;
+        top: 30%; /* Mas arriba para dejar lugar al texto */
+    }
+
+    #vis-impoexpo {
+        width: 90%;
+        top: 35%;
+    }
+
+    body[data-scenestate="3"] #boat-container,
+    body[data-scenestate="4"] #boat-container {
+        transform: translate(-50%, -70%) scale(1.5);
+    }
+}
