@@ -1,0 +1,863 @@
+/* =========================================================
+   RESPONSIVE STYLESHEET — Rosario3 & Tercera Capa
+   Diseño adaptativo premium para dispositivos móviles y tablets
+   ========================================================= */
+
+/* --- Base responsive adjustments --- */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   TABLET & MOBILE (<= 991px)
+   ========================================================= */
+@media screen and (max-width: 991px) {
+  /* Layout principal */
+  .nota-total-container {
+    padding: 0 20px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+  }
+
+  .left-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    flex-basis: 100% !important;
+  }
+
+  .nota-top-part-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+  }
+
+  .nota-top-part {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+    flex-basis: 100% !important;
+  }
+
+  .article-body-extra-container,
+  .article-body {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Columna lateral "Más popular" pasa abajo del artículo de forma limpia y centrada */
+  .right-content {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-basis: auto !important;
+    margin: 40px auto 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .right-content .left-column {
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+  }
+
+  .ranking {
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* =========================================================
+   MOBILE ESPECÍFICO (<= 768px)
+   ========================================================= */
+@media screen and (max-width: 768px) {
+
+  /* --- HEADER ROSARIO3 EN CELULARES --- */
+  #site-header {
+    height: auto !important;
+    min-height: 56px !important;
+    padding: 10px 16px !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: #fff !important;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  #site-header > .extra-holder {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  #site-header span.logo {
+    display: block !important;
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    flex: 0 0 140px !important;
+  }
+
+  #site-header span.logo figure {
+    display: block !important;
+    width: 140px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #site-header span.logo a {
+    display: block !important;
+    width: 140px !important;
+    line-height: 1 !important;
+  }
+
+  #site-header span.logo img {
+    display: block !important;
+    width: 140px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+
+  #site-header .header-content {
+    height: auto !important;
+    flex-basis: auto !important;
+    padding-left: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #site-header .header-content:before {
+    display: none !important;
+  }
+
+  #site-header .header-content .top-part {
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  #site-header .header-content .header-date {
+    font-size: 11px !important;
+    padding-right: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  #site-header .header-content .header-date span {
+    font-size: 11px !important;
+  }
+
+  #site-header .header-redes {
+    height: auto !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+    gap: 6px !important;
+  }
+
+  #site-header .header-redes:before {
+    display: none !important;
+  }
+
+  #site-header .header-redes a {
+    margin-right: 2px !important;
+  }
+
+  #site-header .header-redes svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  /* Ocultar barra horizontal de secciones que desborda 500px en móvil */
+  #site-header .bottom-part {
+    display: none !important;
+  }
+
+  /* --- ARTÍCULO & TIPOGRAFÍA --- */
+  .nota-total-container {
+    padding: 0 16px !important;
+  }
+
+  .nota-main-data {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .nota-main-data .volanta {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .nota-main-data .main-title {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .nota-main-data .bajada {
+    font-size: 1.05rem !important;
+    line-height: 1.45 !important;
+    color: #444 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .autor-share-holder {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 1.25rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  .autor-share-holder .nota-share {
+    flex-basis: auto !important;
+    width: 100% !important;
+  }
+
+  .swiper-container,
+  .gallery-container {
+    width: 100% !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .swiper-slide img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 4px !important;
+  }
+
+  .nota-main-data figcaption {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+    padding: 8px 0 12px !important;
+  }
+
+  .article-body p {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .article-body h2 {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    margin-top: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .article-tags {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .article-tags h3 {
+    margin-bottom: 6px !important;
+  }
+
+  .article-tags .single-tag {
+    font-size: 0.78rem !important;
+    padding: 5px 10px !important;
+  }
+
+  /* --- COMPONENTES TERCERA CAPA EN MÓVIL --- */
+
+  .tc-component {
+    margin: 2rem 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tc-component-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .tc-component-desc {
+    font-size: 0.88rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* 1. Cambios Clave */
+  .tc-cambios-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .tc-cambios-numero-grande {
+    font-size: 2.75rem !important;
+    line-height: 1 !important;
+  }
+
+  .tc-cambios-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    padding: 12px 0 !important;
+  }
+
+  .tc-cambios-num {
+    margin-bottom: 2px !important;
+  }
+
+  .tc-cambios-item-text {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 2. Comparador (Antes vs Ahora) */
+  .tc-comparador-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .tc-comparador-tab {
+    font-size: 0.78rem !important;
+    padding: 7px 12px !important;
+    flex: 1 1 auto !important;
+    text-align: center !important;
+  }
+
+  .tc-comparador-paneles {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .tc-comparador-divider {
+    display: none !important;
+  }
+
+  .tc-comparador-panel {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    padding: 14px !important;
+  }
+
+  .tc-comparador-panel-texto {
+    font-size: 0.88rem !important;
+  }
+
+  /* 3. Slider de potencia */
+  .tc-slider-container {
+    padding: 1rem !important;
+  }
+
+  .tc-slider-display {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .tc-slider-equiv {
+    font-size: 0.82rem !important;
+  }
+
+  .tc-slider-range-labels {
+    font-size: 0.72rem !important;
+  }
+
+  /* 4. Selector "¿Qué me cambia a mí?" (Herramienta) */
+  .tc-tool {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .tc-tool-opciones {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .tc-tool-btn {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 0.88rem !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .tc-tool-resultado {
+    padding: 0 !important;
+    margin-top: 1rem !important;
+  }
+
+  .tc-tool-resultado-inner {
+    padding: 1rem 1.1rem !important;
+  }
+
+  .tc-tool-resultado-titulo {
+    font-size: 0.95rem !important;
+  }
+
+  .tc-tool-resultado-texto {
+    font-size: 0.85rem !important;
+  }
+
+  /* 5. Timeline ("Contexto") */
+  .tc-timeline {
+    position: relative !important;
+    padding: 0.5rem 0 0.5rem 28px !important;
+  }
+
+  .tc-timeline::before {
+    left: 7px !important;
+    width: 2px !important;
+  }
+
+  .tc-timeline-item {
+    position: relative !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    margin-bottom: 1.25rem !important;
+    padding: 0 0 1.25rem 12px !important;
+  }
+
+  .tc-timeline-dot {
+    position: absolute !important;
+    left: -27px !important;
+    top: 4px !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .tc-timeline-fecha {
+    font-size: 0.78rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .tc-timeline-titulo {
+    font-size: 0.88rem !important;
+  }
+
+  /* 6. Explorador de cambios ("Explorable") - Cabezales a la izquierda para mobile */
+  .tc-explorer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    background: var(--tc-bg-component) !important;
+    border: 1px solid var(--tc-border) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+  }
+
+  .tc-explorer-tabs {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 115px !important;
+    min-width: 105px !important;
+    max-width: 125px !important;
+    flex-shrink: 0 !important;
+    border-bottom: none !important;
+    border-right: 1px solid var(--tc-border) !important;
+    background: #ffffff !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .tc-explorer-tab {
+    width: 100% !important;
+    flex-shrink: 0 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    text-align: left !important;
+    padding: 11px 9px !important;
+    font-size: 0.73rem !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
+    color: var(--tc-text-secondary) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--tc-border-light) !important;
+    border-left: 3px solid transparent !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+  }
+
+  .tc-explorer-tab:last-child {
+    border-bottom: none !important;
+  }
+
+  .tc-explorer-tab[aria-selected="true"] {
+    color: var(--tc-brand) !important;
+    font-weight: 700 !important;
+    background: var(--tc-bg-component) !important;
+    border-left: 3px solid var(--tc-brand) !important;
+  }
+
+  .tc-explorer-tab[aria-selected="true"]::after {
+    display: none !important;
+  }
+
+  .tc-explorer-panel {
+    flex: 1 !important;
+    min-width: 0 !important;
+    padding: 1rem 0.85rem !important;
+  }
+
+  .tc-explorer-panel-num {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .tc-explorer-panel h4 {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.4rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .tc-explorer-panel p {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .tc-explorer-mini-comparador {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .tc-explorer-mini-card {
+    width: 100% !important;
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 7. Microinteracciones */
+  .tc-micro-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .tc-micro-card {
+    width: 100% !important;
+  }
+
+  .tc-dato-revelable {
+    font-size: 0.85rem !important;
+    word-break: break-word !important;
+  }
+
+  /* --- SECCIÓN "SEGUÍ LEYENDO" EN MÓVIL --- */
+  #segui-leyendo {
+    width: 100% !important;
+    padding: 30px 0 20px !important;
+    position: relative !important;
+    margin-top: 30px !important;
+    overflow: hidden !important;
+  }
+
+  #segui-leyendo .section-title {
+    position: static !important;
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 1.25rem !important;
+    text-align: left !important;
+    color: #f15a08 !important;
+  }
+
+  #segui-leyendo > .flex-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  #segui-leyendo .extra-holder {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box article {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    background: #fff !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #e2e4e9 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box figure {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 190px !important;
+    margin: 0 !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box figure img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box .entry-data.absolute,
+  #segui-leyendo .entry-box.big-entry-box .entry-data {
+    position: static !important;
+    padding: 14px 16px !important;
+    background: #fff !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box .entry-data .volanta {
+    color: #f15a08 !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 4px !important;
+  }
+
+  #segui-leyendo .entry-box.big-entry-box .entry-data .title {
+    color: #202020 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+    font-weight: 700 !important;
+  }
+
+  #segui-leyendo .entry-share {
+    display: none !important;
+  }
+
+  /* --- WIDGET ROSARIO AHORA (CLIMA) EN MÓVIL --- */
+  .modulo-clima {
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 20px auto 0 !important;
+    background: #fff !important;
+    padding: 18px !important;
+    border-radius: 8px !important;
+    border: 1px solid #e2e4e9 !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  }
+
+  .modulo-clima .clima-ahora {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-bottom: 12px !important;
+  }
+
+  .modulo-clima .clima-ahora figure {
+    width: 70px !important;
+    max-width: 70px !important;
+    height: auto !important;
+    margin: 0 12px 0 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .modulo-clima .clima-ahora figure img {
+    width: 70px !important;
+    height: auto !important;
+  }
+
+  .modulo-clima .pronostico-hoy {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-bottom: 14px !important;
+  }
+
+  .modulo-clima .pronostico-hoy figure {
+    width: 36px !important;
+    max-width: 36px !important;
+    flex-shrink: 0 !important;
+    margin-right: 8px !important;
+  }
+
+  .modulo-clima .pronostico-hoy figure img {
+    width: 36px !important;
+    height: auto !important;
+  }
+
+  .modulo-clima .pronostico-horas {
+    margin-bottom: 16px !important;
+  }
+
+  .modulo-clima .por-hora {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 42px !important;
+    border-top: 1px solid #f0f0f0 !important;
+  }
+
+  .modulo-clima .por-hora:last-child {
+    border-bottom: 1px solid #f0f0f0 !important;
+  }
+
+  .modulo-clima .por-hora .hora-pronostico {
+    height: 42px !important;
+    line-height: 42px !important;
+    border: none !important;
+    flex: 0 0 60px !important;
+    font-size: 13px !important;
+  }
+
+  .modulo-clima .por-hora figure {
+    flex: 0 0 40px !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+
+  .modulo-clima .por-hora figure img {
+    width: 26px !important;
+    height: auto !important;
+  }
+
+  .modulo-clima .por-hora > p:last-child {
+    flex: 0 0 60px !important;
+    height: 42px !important;
+    line-height: 42px !important;
+    font-size: 16px !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+    margin: 0 !important;
+  }
+
+  /* --- SECCIÓN "MÁS DE INFORMACIÓN GENERAL" EN MÓVIL --- */
+  #mas-de-seccion {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    background: #f8f9fa !important;
+    padding: 24px 16px !important;
+    margin-top: 30px !important;
+    z-index: 1 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    border-top: 1px solid #e2e4e9 !important;
+  }
+
+  #mas-de-seccion .hide-mas {
+    display: none !important;
+  }
+
+  #mas-de-seccion .mod-title {
+    padding-left: 0 !important;
+    font-size: 1.05rem !important;
+    margin-bottom: 14px !important;
+    color: #f15a08 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+  }
+
+  #mas-de-seccion .swiper-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #mas-de-seccion .swiper-container:before {
+    display: none !important;
+  }
+
+  #mas-de-seccion .swiper-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+    width: max-content !important;
+    padding-left: 0 !important;
+    padding-bottom: 12px !important;
+  }
+
+  #mas-de-seccion .swiper-slide {
+    width: 220px !important;
+    min-width: 220px !important;
+    flex-shrink: 0 !important;
+    margin-right: 0 !important;
+    background: #fff !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+    border: 1px solid #eaedf0 !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+  }
+
+  #mas-de-seccion .swiper-slide article {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  #mas-de-seccion .swiper-slide figure {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #mas-de-seccion .swiper-slide figure img {
+    width: 100% !important;
+    height: 110px !important;
+    object-fit: cover !important;
+    border-radius: 4px !important;
+  }
+
+  #mas-de-seccion .swiper-slide .entry-data .title {
+    font-size: 0.82rem !important;
+    line-height: 1.3 !important;
+    color: #222 !important;
+  }
+
+  #mas-de-seccion .swiper-button-prev,
+  #mas-de-seccion .swiper-button-next {
+    display: none !important;
+  }
+
+  #mas-de-seccion .last-swiper-link {
+    display: none !important;
+  }
+
+  /* --- PUBLICIDAD Y POPUP PUSH --- */
+  .banner-box {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 15px auto !important;
+  }
+
+  .popin-push {
+    display: none !important; /* Desactivar popup en celulares */
+  }
+
+  /* --- NOTA DE CRÉDITO DEL PROTOTIPO --- */
+  footer {
+    padding: 1.5rem 1rem !important;
+    margin: 2rem 0 !important;
+    font-size: 0.75rem !important;
+    text-align: center !important;
+  }
+}

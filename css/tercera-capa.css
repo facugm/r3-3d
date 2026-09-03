@@ -761,24 +761,21 @@
 }
 
 .tc-tool-resultado {
-  margin-top: 1rem;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.5s var(--tc-ease), opacity var(--tc-duration) var(--tc-ease), margin-top var(--tc-duration);
+  display: none;
+  margin-top: 1.25rem;
 }
 
 .tc-tool-resultado.tc-active {
-  max-height: 500px;
-  opacity: 1;
-  margin-top: 1.25rem;
+  display: block;
+  animation: tcFadeIn var(--tc-duration) var(--tc-ease);
 }
 
 .tc-tool-resultado-inner {
   background: var(--tc-bg);
   border: 1px solid var(--tc-border);
-  border-left: 3px solid var(--tc-brand);
-  border-radius: 4px;
+  border-left: 4px solid var(--tc-brand);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
   padding: 1.25rem;
 }
 
@@ -813,7 +810,7 @@
    ========================================================= */
 .tc-timeline {
   position: relative;
-  padding: 1rem 0 0.5rem 2rem;
+  padding: 1rem 0 0.5rem 28px;
 }
 
 .tc-timeline::before {
@@ -846,7 +843,7 @@
 
 .tc-timeline-dot {
   position: absolute;
-  left: -2rem;
+  left: -27px;
   top: 4px;
   width: 14px;
   height: 14px;
@@ -1210,8 +1207,9 @@
   top: 0;
   left: 0;
   width: 0%;
-  height: 3px;
-  background: var(--tc-brand);
+  height: 5px;
+  background: linear-gradient(90deg, var(--tc-brand), var(--tc-brand-dark, #c0392b));
+  box-shadow: 0 1px 4px rgba(232, 86, 35, 0.4);
   z-index: 9999;
   transition: width 0.1s linear;
 }
