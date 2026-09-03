@@ -345,6 +345,32 @@
   }
 
   /* -------------------------------------------------------
+     8b. RANKING TABS ("Más popular": Notas / Protagonistas)
+     ------------------------------------------------------- */
+  function initRankingTabs() {
+    const tabNotas = $('#rnk-notas-tab');
+    const tabProtagonistas = $('#rnk-protagonistas-tab');
+    const rnkNotas = $('#rnk-notas');
+    const rnkProtagonistas = $('#rnk-protagonistas');
+
+    if (!tabNotas || !tabProtagonistas || !rnkNotas || !rnkProtagonistas) return;
+
+    tabNotas.addEventListener('click', () => {
+      tabNotas.classList.add('active');
+      tabProtagonistas.classList.remove('active');
+      rnkNotas.classList.remove('hide');
+      rnkProtagonistas.classList.add('hide');
+    });
+
+    tabProtagonistas.addEventListener('click', () => {
+      tabProtagonistas.classList.add('active');
+      tabNotas.classList.remove('active');
+      rnkProtagonistas.classList.remove('hide');
+      rnkNotas.classList.add('hide');
+    });
+  }
+
+  /* -------------------------------------------------------
      9. INIT
      ------------------------------------------------------- */
   function init() {
@@ -356,6 +382,7 @@
     initExplorer();
     initMicrointeracciones();
     initScrollProgress();
+    initRankingTabs();
   }
 
   // Run on DOM ready
